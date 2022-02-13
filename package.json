@@ -1,0 +1,14 @@
+{
+  "name": "mehm8128",
+  "version": "0.0.0",
+  "private": true,
+  "author": "mehm8128 <mehm8128@gmail.com>",
+  "description": "bot for traQ",
+  "dependencies": {
+    "hubot": "^3.3.2",
+    "hubot-traq": "^1.8.1"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
