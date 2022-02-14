@@ -9,8 +9,8 @@ module.exports = (robot) => {
       '現在できることは\n- ping=>pong\n- help=>できること\n- AtCoder id=>前回のコンテストの結果\nです！'
     )
   })
-  robot.respond(/AtCoder/i, (response) => {
-    const userId = response.plainText.split('')[2]
+  robot.respond(/AtCoder.*/i, (response) => {
+    const userId = response.plainText.split(' ')[2]
     const url = `https://atcoder.jp/users/${userId}/history/json`
     fetch(url)
       .then((res) => {
