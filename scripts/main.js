@@ -28,8 +28,8 @@ module.exports = (robot) => {
   })
   robot.catchAll((res) => {
     if (res.message.BotMessageStampsUpdated) {
-      const { messageId, stamps } = res.message
-      if (!stamps) return
+      const messageId = res.message.messageId
+      const stamps = res.message.stamps
       robot.send(
         { userID: 'mehm8128' },
         `${messageId}で:${
