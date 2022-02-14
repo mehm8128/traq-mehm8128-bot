@@ -1,6 +1,5 @@
 const fetch = require('node-fetch')
 module.exports = (robot) => {
-  // "@botName hoge"を受け取ったら"@senderName fuga"を送り返す
   robot.respond(/ping$/i, (res) => {
     res.reply('pong!')
   })
