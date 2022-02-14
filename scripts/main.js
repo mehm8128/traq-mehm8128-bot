@@ -31,6 +31,11 @@ module.exports = (robot) => {
       const messageId = res.message.messageId
       const stamps = res.message.stamps
       if (!stamps) return
+      if (stamps.length > 5) {
+        for (let i = 0; i < stamps.length; i++) {
+          if (stamps[i].count > 3) return
+        }
+      }
       robot.send(
         { userID: 'c714a848-2886-4c10-a313-de9bc61cb2bb' },
         `${messageId}で:${
