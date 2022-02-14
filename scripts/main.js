@@ -36,9 +36,9 @@ module.exports = (robot) => {
       //     stamps[stamps.length - 1].stampName
       //   }:がつけられましたかもしれません`
       // )
-      res.send('動いてます')
+      robot.send({ userID: '@mehm8128' }, '動いてます')
     } else {
-      res.send('死んでます')
+      robot.send({ userID: '@mehm8128' }, '死んでます')
     }
   })
 }
