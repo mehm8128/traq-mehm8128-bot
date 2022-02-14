@@ -40,15 +40,12 @@ module.exports = (robot) => {
       )
     }
   })
-  robot.respond(/.*(？|\?)/, (res) => {
-    if (res.message.message.user.name === 'BOT_mehm8128') return
-    const question = res.message.message.plainText.split(' ')[1]
-    res.send(`@BOT_mehm8128 @全人類 ${question}`)
-  })
-  robot.respond(/.*\@全人類.*/, (res) => {
-    res.send('aaa')
-    if (res.message.message.user.name !== 'BOT_mehm8128') return
-    res.send('bbb')
+  // robot.respond(/.*(？|\?)/, (res) => {
+  //   if (res.message.message.user.name === 'BOT_mehm8128') return
+  //   const question = res.message.message.plainText.split(' ')[1]
+  //   res.send(`@BOT_mehm8128 @全人類 ${question}`)
+  // })
+  robot.respond(/スタンプ押して/, (res) => {
     res.send(
       { type: 'stamp', name: 'hi_UD' },
       { type: 'stamp', name: 'iie_UD' }
