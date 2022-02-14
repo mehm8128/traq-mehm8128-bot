@@ -34,7 +34,7 @@ module.exports = (robot) => {
       if (stamps[0].count !== 1) return
       robot.send(
         { userID: 'c714a848-2886-4c10-a313-de9bc61cb2bb' },
-        `${messageId}で:${
+        `https://q.trap.jp/messages/${messageId}で:${
           stamps[stamps.length - 1].stampName
         }:がつけられましたかもしれません`
       )
