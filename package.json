@@ -6,7 +6,8 @@
   "description": "bot for traQ",
   "dependencies": {
     "hubot": "^3.3.2",
-    "hubot-traq": "^1.8.1"
+    "hubot-traq": "^1.8.1",
+    "node-fetch": "^2.6.7"
   },
   "engines": {
     "node": "0.10.x"
