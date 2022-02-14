@@ -26,4 +26,16 @@ module.exports = (robot) => {
         response.reply(err)
       })
   })
+  robot.catchAll((res) => {
+    if (res.message.BotMessageStampsUpdated) {
+      const { messageId, stamps } = res.message
+      if (!stamps) return
+      robot.send(
+        { userID: 'mehm8128' },
+        `${messageId}で:${
+          stamps[stamps.lentgh - 1].stampName
+        }:がつけられましたかもしれません`
+      )
+    }
+  })
 }
