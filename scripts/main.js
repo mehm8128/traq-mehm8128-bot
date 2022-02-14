@@ -10,7 +10,7 @@ module.exports = (robot) => {
     )
   })
   robot.respond(/AtCoder.*/i, (response) => {
-    const userId = response.message.plainText.split(' ')[2]
+    const userId = response.message.message.plainText.split(' ')[2]
     const url = `https://atcoder.jp/users/${userId}/history/json`
     fetch(url)
       .then((res) => {
