@@ -30,10 +30,11 @@ module.exports = (robot) => {
     if (res.message.BotMessageStampsUpdated) {
       const messageId = res.message.messageId
       const stamps = res.message.stamps
+      if (!stamps) return
       robot.send(
         { userID: 'mehm8128' },
         `${messageId}で:${
-          stamps[stamps.lentgh - 1].stampName
+          stamps[stamps.length - 1].stampName
         }:がつけられましたかもしれません`
       )
     }
