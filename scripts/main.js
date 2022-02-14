@@ -27,16 +27,12 @@ module.exports = (robot) => {
       })
   })
   robot.catchAll((res) => {
-    if (res.message.BotMessageStampsUpdated) {
+    if (res.message.type === 'BotMessageStampsUpdated') {
       const messageId = res.message.messageId
       const stamps = res.message.stamps
-      // robot.send(
-      //   { userID: 'mehm8128' },
-      //   `${messageId}で:${
-      //     stamps[stamps.length - 1].stampName
-      //   }:がつけられましたかもしれません`
-      // )
-      res.send(
+      if (!stamps) return
+      robot.send(
+        { userID: 'mehm8128' },
         `${messageId}で:${
           stamps[stamps.length - 1].stampName
         }:がつけられましたかもしれません`
