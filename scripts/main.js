@@ -30,18 +30,13 @@ module.exports = (robot) => {
     if (res.message.type === 'BotMessageStampsUpdated') {
       const messageId = res.message.messageId
       const stamps = res.message.stamps
-      if (!stamps) return
       // robot.send(
       //   { userID: 'mehm8128' },
       //   `${messageId}で:${
       //     stamps[stamps.length - 1].stampName
       //   }:がつけられましたかもしれません`
       // )
-      res.send(
-        `${messageId}で:${
-          stamps[stamps.length - 1].stampName
-        }:がつけられましたかもしれません`
-      )
+      res.send('aaa')
     }
   })
 }
