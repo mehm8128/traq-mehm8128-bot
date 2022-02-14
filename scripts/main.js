@@ -41,7 +41,7 @@ module.exports = (robot) => {
     }
   })
   robot.hear(/mehm8128/, (res) => {
-    if (res.message.res.message.message.user.name === 'BOT_mehm8128') return
+    if (res.message.message.user.name === 'BOT_mehm8128') return
     res.send('こんにちは、mehm8128です')
   })
   robot.respond(/スタンプ押して/, (res) => {
