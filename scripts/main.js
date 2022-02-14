@@ -41,6 +41,7 @@ module.exports = (robot) => {
     }
   })
   robot.respond(/.*(？|\?)/, (res) => {
+    if (res.message.message.user.name === 'BOT_mehm8128') return
     const question = res.message.message.plainText.split(' ')[1]
     res.send(`@BOT_mehm8128 @全人類 ${question}`)
   })
