@@ -42,10 +42,12 @@ module.exports = (robot) => {
   })
   robot.respond(/.*(？|\?)/, (res) => {
     const question = res.message.message.plainText.split(' ')[1]
-    res.send(`@BOT_mehm8128 @全人類\n${question}`)
+    res.send(`@BOT_mehm8128 @全人類 ${question}`)
   })
   robot.respond(/.*@全人類.*/, (res) => {
+    res.send('aaa')
     if (res.message.message.user.name !== 'BOT_mehm8128') return
+    res.send('bbb')
     res.send(
       { type: 'stamp', name: 'hi_UD' },
       { type: 'stamp', name: 'iie_UD' }
