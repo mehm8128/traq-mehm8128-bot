@@ -27,24 +27,14 @@ module.exports = (robot) => {
       })
   })
   robot.catchAll((res) => {
-    robot.send({ userID: 'c714a848-2886-4c10-a313-de9bc61cb2bb' }, 'aaa')
     if (res.message.type === 'BotMessageStampsUpdated') {
-      // const messageId = res.message.messageId
-      // const stamps = res.message.stamps
-      // robot.send(
-      //   { userID: 'mehm8128' },
-      //   `${messageId}で:${
-      //     stamps[stamps.length - 1].stampName
-      //   }:がつけられましたかもしれません`
-      // )
+      const messageId = res.message.messageId
+      const stamps = res.message.stamps
       robot.send(
         { userID: 'c714a848-2886-4c10-a313-de9bc61cb2bb' },
-        '動いてます'
-      )
-    } else {
-      robot.send(
-        { userID: 'c714a848-2886-4c10-a313-de9bc61cb2bb' },
-        '死んでます'
+        `${messageId}で:${
+          stamps[stamps.length - 1].stampName
+        }:がつけられましたかもしれません`
       )
     }
   })
