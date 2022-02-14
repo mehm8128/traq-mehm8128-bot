@@ -5,7 +5,7 @@ module.exports = (robot) => {
   })
   robot.respond(/((何|なに)ができるの？|できること|機能|help)/i, (res) => {
     res.reply(
-      '現在できることは\n- ping=>pong\n- help=>できること\n- AtCoder id=>前回のコンテストの結果\n- メッセージに最初にスタンプがつけられたらmehm8128のDMに送信\nです！'
+      '現在できること\n- ping=>pong\n- help=>できることを教えてくれます\n- AtCoder id=>前回のコンテストの結果を教えてくれます\n- スタンプ押して=> スタンプを押してくれます\n- mehm8128=> 挨拶をします\n- メッセージに最初にスタンプがつけられたらmehm8128のDMに送信します\nです！'
     )
   })
   robot.respond(/AtCoder.*/i, (response) => {
@@ -40,11 +40,10 @@ module.exports = (robot) => {
       )
     }
   })
-  // robot.respond(/.*(？|\?)/, (res) => {
-  //   if (res.message.message.user.name === 'BOT_mehm8128') return
-  //   const question = res.message.message.plainText.split(' ')[1]
-  //   res.send(`@BOT_mehm8128 @全人類 ${question}`)
-  // })
+  robot.hear(/mehm8128/, (res) => {
+    if (res.message.res.message.message.user.name === 'BOT_mehm8128') return
+    res.send('こんにちは、mehm8128です')
+  })
   robot.respond(/スタンプ押して/, (res) => {
     res.send(
       { type: 'stamp', name: 'hi_UD' },
