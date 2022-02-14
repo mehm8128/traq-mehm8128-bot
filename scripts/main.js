@@ -27,6 +27,7 @@ module.exports = (robot) => {
       })
   })
   robot.catchAll((res) => {
+    res.send({ userID: 'mehm8128' }, 'aaa')
     if (res.message.type === 'BotMessageStampsUpdated') {
       // const messageId = res.message.messageId
       // const stamps = res.message.stamps
@@ -36,9 +37,9 @@ module.exports = (robot) => {
       //     stamps[stamps.length - 1].stampName
       //   }:がつけられましたかもしれません`
       // )
-      robot.send({ userID: '@mehm8128' }, '動いてます')
+      robot.send({ userID: 'mehm8128' }, '動いてます')
     } else {
-      robot.send({ userID: '@mehm8128' }, '死んでます')
+      robot.send({ userID: 'mehm8128' }, '死んでます')
     }
   })
 }
