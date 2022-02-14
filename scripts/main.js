@@ -4,6 +4,11 @@ module.exports = (robot) => {
   robot.respond(/ping$/i, (res) => {
     res.reply('pong!')
   })
+  robot.respond(/((何|なに)ができるの？|できること|機能|help)/i, (res) => {
+    res.reply(
+      '現在できることは\n- ping=>pong\n- help=>できること\n- AtCoder=>前回のコンテストの結果\nです！'
+    )
+  })
   robot.respond(/AtCoder/i, (response) => {
     const url = `https://atcoder.jp/users/${response.message.user.name}/history/json`
     fetch(url)
