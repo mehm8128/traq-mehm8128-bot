@@ -5,7 +5,7 @@ module.exports = (robot) => {
   })
   robot.respond(/((何|なに)ができるの？|できること|機能|help)/i, (res) => {
     res.reply(
-      '現在できることは\n- ping=>pong\n- help=>できること\n- AtCoder id=>前回のコンテストの結果\nです！'
+      '現在できることは\n- ping=>pong\n- help=>できること\n- AtCoder id=>前回のコンテストの結果\n- メッセージに最初にスタンプがつけられたらmehm8128のDMに送信\nです！'
     )
   })
   robot.respond(/AtCoder.*/i, (response) => {
