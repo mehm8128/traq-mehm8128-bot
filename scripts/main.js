@@ -6,11 +6,12 @@ module.exports = (robot) => {
   })
   robot.respond(/((何|なに)ができるの？|できること|機能|help)/i, (res) => {
     res.reply(
-      '現在できることは\n- ping=>pong\n- help=>できること\n- AtCoder=>前回のコンテストの結果\nです！'
+      '現在できることは\n- ping=>pong\n- help=>できること\n- AtCoder id=>前回のコンテストの結果\nです！'
     )
   })
   robot.respond(/AtCoder/i, (response) => {
-    const url = `https://atcoder.jp/users/${response.message.user.name}/history/json`
+    const userId = response.plainText.split('')[2]
+    const url = `https://atcoder.jp/users/${userId}/history/json`
     fetch(url)
       .then((res) => {
         return res.json()
