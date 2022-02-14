@@ -30,6 +30,7 @@ module.exports = (robot) => {
     if (res.message.type === 'BotMessageStampsUpdated') {
       const messageId = res.message.messageId
       const stamps = res.message.stamps
+      if ('stamps') return
       robot.send(
         { userID: 'c714a848-2886-4c10-a313-de9bc61cb2bb' },
         `${messageId}で:${
