@@ -27,7 +27,7 @@ module.exports = (robot) => {
       })
   })
   robot.catchAll((res) => {
-    res.send({ userID: 'mehm8128' }, 'aaa')
+    robot.send({ userID: 'mehm8128' }, 'aaa')
     if (res.message.type === 'BotMessageStampsUpdated') {
       // const messageId = res.message.messageId
       // const stamps = res.message.stamps
