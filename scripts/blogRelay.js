@@ -1,4 +1,3 @@
-const fetch = require('node-fetch')
 const CronJob = require('cron').CronJob
 
 module.exports = (robot) => {

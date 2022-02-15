@@ -1,16 +1,19 @@
 const fetch = require('node-fetch')
 const CronJob = require('cron').CronJob
+const { parse } = require('node-html-parser')
 
 module.exports = (robot) => {
   robot.respond(/ping$/i, (res) => {
     res.reply('pong!')
   })
   robot.respond(/((何|なに)ができるの？|できること|機能|help)/i, (res) => {
+    if (res.message.message.user.name === 'BOT_mehm8128') return
     res.reply(
       '現在できること\n- ping=>pong\n- help=>できることを教えてくれます\n- AtCoder id=>前回のコンテストの結果を教えてくれます\n- スタンプ押して=> スタンプを押してくれます\n- mehm8128=> 挨拶をします\n- メッセージに最初にスタンプがつけられたらmehm8128のDMに送信します\nです！'
     )
   })
   robot.respond(/AtCoder.*/i, (response) => {
+    if (res.message.message.user.name === 'BOT_mehm8128') return
     const userId = response.message.message.plainText.split(' ')[2]
     const url = `https://atcoder.jp/users/${userId}/history/json`
     fetch(url)
@@ -48,20 +51,62 @@ module.exports = (robot) => {
   })
   robot.respond(/スタンプ押して/, (res) => {
     res.send(
-      { type: 'stamp', name: 'hi_UD' },
-      { type: 'stamp', name: 'iie_UD' }
+      { type: 'stamp', name: 'blob_pyon_inverse' },
+      { type: 'stamp', name: 'blob_pyon' }
     )
   })
-  const cron = new CronJob(
-    '30 17 * * *',
+  const reminder = new CronJob(
+    '30 19 * * *',
     () => {
       robot.send(
         { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
-        '30分後にp4k集会です！'
+        '@mehm8128 30分後にunders集会です！'
       )
     },
     null,
     true,
     'Asia/Tokyo'
   )
+  const atCoderReminder = new CronJob(
+    '30 20 * * *',
+    () => {
+      const url = `https://atcoder.jp/contests/`
+      fetch(url).then((res) => {
+        return res
+      })
+    },
+    null,
+    true,
+    'Asia/Tokyo'
+  )
+  robot.respond(/remind/i, (res) => {
+    if (res.message.message.user.name === 'BOT_mehm8128') return
+    const today = new Date()
+    const todayMonth = today.getMonth() + 1
+    const todayDate = today.getDate()
+    const url = 'https://atcoder.jp/contests/'
+    fetch(url)
+      .then((res) => {
+        return res.text()
+      })
+      .then((data) => {
+        const root = parse(data)
+        const time = root
+          .querySelector('#contest-table-upcoming')
+          .getElementsByTagName('time')[0].innerText
+        const month = Number(time.split('-')[1])
+        const date = Number(time.split('-')[2].split(' ')[0])
+        const a = root
+          .querySelector('#contest-table-upcoming')
+          .getElementsByTagName('a')[1]
+          .attrs.href.split('/')[2]
+          .slice(0, 3)
+        //if (month === todayMonth && date === todayDate && a === 'abc') {
+        robot.send(
+          { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
+          '@mehm8128 :user1_1::user1_2: 30分後にABCです！'
+        )
+        //}
+      })
+  })
 }

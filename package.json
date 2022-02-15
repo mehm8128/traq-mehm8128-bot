@@ -8,7 +8,9 @@
     "cron": "^1.8.2",
     "hubot": "^3.3.2",
     "hubot-traq": "^1.8.1",
-    "node-fetch": "^2.6.7"
+    "jsdom": "^19.0.0",
+    "node-fetch": "^2.6.7",
+    "node-html-parser": "^5.2.0"
   },
   "engines": {
     "node": "0.10.x"
