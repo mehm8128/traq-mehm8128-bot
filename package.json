@@ -5,6 +5,7 @@
   "author": "mehm8128 <mehm8128@gmail.com>",
   "description": "bot for traQ",
   "dependencies": {
+    "cron": "^1.8.2",
     "hubot": "^3.3.2",
     "hubot-traq": "^1.8.1",
     "node-fetch": "^2.6.7"

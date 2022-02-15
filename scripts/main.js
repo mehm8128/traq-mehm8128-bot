@@ -1,4 +1,6 @@
 const fetch = require('node-fetch')
+const CronJob = require('cron').CronJob
+
 module.exports = (robot) => {
   robot.respond(/ping$/i, (res) => {
     res.reply('pong!')
@@ -50,4 +52,16 @@ module.exports = (robot) => {
       { type: 'stamp', name: 'iie_UD' }
     )
   })
+  const cron = new CronJob(
+    '57 9 * * *',
+    () => {
+      robot.send(
+        { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
+        '時間です！'
+      )
+    },
+    null,
+    true,
+    'Asia/Tokyo'
+  )
 }
