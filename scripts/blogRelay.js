@@ -17,8 +17,7 @@ module.exports = (robot) => {
   const todayDate = today.getDate()
   const todayString = `${todayMonth}/${todayDate}`
   const tommorowString = `${todayMonth}/${todayDate + 1}`
-  //const cron = new CronJob('51 11 * * *', () => {
-  robot.respond(/remind/, (res) => {
+  const cron = new CronJob('10 12 * * *', () => {
     if (todayString in below && !(tommorowString in below)) {
       robot.send(
         { channelID: channelID },
