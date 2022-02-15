@@ -45,68 +45,58 @@ module.exports = (robot) => {
       )
     }
   })
-  robot.hear(/mehm8128/, (res) => {
-    if (res.message.message.user.name === 'BOT_mehm8128') return
-    res.send('こんにちは、mehm8128です')
-  })
   robot.respond(/スタンプ押して/, (res) => {
     res.send(
       { type: 'stamp', name: 'blob_pyon_inverse' },
       { type: 'stamp', name: 'blob_pyon' }
     )
   })
-  const reminder = new CronJob(
-    '30 19 * * *',
-    () => {
-      robot.send(
-        { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
-        '@mehm8128 30分後にunders集会です！'
-      )
-    },
-    null,
-    true,
-    'Asia/Tokyo'
-  )
+  // const reminder = new CronJob(
+  //   '30 19 * * *',
+  //   () => {
+  //     robot.send(
+  //       { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
+  //       '@mehm8128 30分後にです！'
+  //     )
+  //   },
+  //   null,
+  //   true,
+  //   'Asia/Tokyo'
+  // )
   const atCoderReminder = new CronJob(
     '30 20 * * *',
     () => {
-      const url = `https://atcoder.jp/contests/`
-      fetch(url).then((res) => {
-        return res
-      })
+      if (res.message.message.user.name === 'BOT_mehm8128') return
+      const today = new Date()
+      const todayMonth = today.getMonth() + 1
+      const todayDate = today.getDate()
+      const url = 'https://atcoder.jp/contests/'
+      fetch(url)
+        .then((res) => {
+          return res.text()
+        })
+        .then((data) => {
+          const root = parse(data)
+          const time = root
+            .querySelector('#contest-table-upcoming')
+            .getElementsByTagName('time')[0].innerText
+          const month = Number(time.split('-')[1])
+          const date = Number(time.split('-')[2].split(' ')[0])
+          const a = root
+            .querySelector('#contest-table-upcoming')
+            .getElementsByTagName('a')[1]
+            .attrs.href.split('/')[2]
+            .slice(0, 3)
+          if (month === todayMonth && date === todayDate && a === 'abc') {
+            robot.send(
+              { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
+              '@mehm8128 :user1_1::user1_2: 30分後にABCです！'
+            )
+          }
+        })
     },
     null,
     true,
     'Asia/Tokyo'
   )
-  robot.respond(/remind/i, (res) => {
-    if (res.message.message.user.name === 'BOT_mehm8128') return
-    const today = new Date()
-    const todayMonth = today.getMonth() + 1
-    const todayDate = today.getDate()
-    const url = 'https://atcoder.jp/contests/'
-    fetch(url)
-      .then((res) => {
-        return res.text()
-      })
-      .then((data) => {
-        const root = parse(data)
-        const time = root
-          .querySelector('#contest-table-upcoming')
-          .getElementsByTagName('time')[0].innerText
-        const month = Number(time.split('-')[1])
-        const date = Number(time.split('-')[2].split(' ')[0])
-        const a = root
-          .querySelector('#contest-table-upcoming')
-          .getElementsByTagName('a')[1]
-          .attrs.href.split('/')[2]
-          .slice(0, 3)
-        //if (month === todayMonth && date === todayDate && a === 'abc') {
-        robot.send(
-          { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
-          '@mehm8128 :user1_1::user1_2: 30分後にABCです！'
-        )
-        //}
-      })
-  })
 }
