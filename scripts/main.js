@@ -53,11 +53,11 @@ module.exports = (robot) => {
     )
   })
   const cron = new CronJob(
-    '57 9 * * *',
+    '30 17 * * *',
     () => {
       robot.send(
         { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
-        '時間です！'
+        '30分後にp4k集会です！'
       )
     },
     null,
