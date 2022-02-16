@@ -9,7 +9,7 @@ module.exports = (robot) => {
   robot.respond(/((何|なに)ができるの？|できること|機能|help)/i, (res) => {
     if (res.message.message.user.name === 'BOT_mehm8128') return
     res.reply(
-      '現在できること\n- ping=>pong\n- help=>できることを教えてくれます\n- AtCoder id=>前回のコンテストの結果を教えてくれます\n- スタンプ押して=> スタンプを押してくれます\n- mehm8128=> 挨拶をします\n- メッセージに最初にスタンプがつけられたらmehm8128のDMに送信します\nです！'
+      '現在できること\n- ping=>pong\n- help=>できることを教えてくれます\n- AtCoder id=>前回のコンテストの結果を教えてくれます\n- スタンプ押して=> スタンプを押してくれます\n- メッセージに最初にスタンプがつけられたらmehm8128のDMに送信します\n- ABCの開始30分前にmehm8128のtimes/mehm8128にリマインドします\n- ブログリレー用のリマインドもあります'
     )
   })
   robot.respond(/AtCoder.*/i, (response) => {
