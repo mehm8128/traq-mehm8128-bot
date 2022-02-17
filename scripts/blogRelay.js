@@ -1,13 +1,9 @@
 const CronJob = require('cron').CronJob
 
 module.exports = (robot) => {
-  const above = {
-    '2/15': 'mehm8128',
-    '2/16': 'mehm',
-  }
-  const below = {
-    '2/15': 'mehm8128',
-    '2/16': 'mehm',
+  const list = {
+    '2/18': '@mehm8128 @mehm',
+    '2/19': '@mehm8128 @mehm',
   }
   const channelID = 'e93ef204-1e25-4456-90bf-9214a2e6684e'
   //ブログリレーID'22edf673-352f-4f18-88a1-201e681bc483'
@@ -17,27 +13,27 @@ module.exports = (robot) => {
   const todayString = `${todayMonth}/${todayDate}`
   const tommorowString = `${todayMonth}/${todayDate + 1}`
   const cron = new CronJob(
-    '13 12 * * *',
+    '00 10 * * *',
     () => {
-      if (todayString in below && !(tommorowString in below)) {
+      if (todayString in list && !(tommorowString in list)) {
         robot.send(
           { channelID: channelID },
-          `@${above[todayString]} ,@${below[todayString]} 今日です\n@${above[tommorowString]} 明日です`
+          `# ブログリレーリマインド\n${list[todayString]} 今日です\n## 注意！\n- 記事の初めに新歓ブログリレー2022の何日目の記事なのかを書いてください。\n- 記事の最後に次回の担当者の紹介をしてください。\n- 「新歓ブログリレー2022」のタグをつけてください。\n- post imageを設定してください。\n- 分からないことがあれば@ mehm8128まで。`
         )
-      } else if (!(todayString in below) && tommorowString in below) {
+      } else if (!(todayString in list) && tommorowString in list) {
         robot.send(
           { channelID: channelID },
-          `@${above[todayString]} 今日です\n@${above[tommorowString]} ,@${below[tommorowString]} 明日です`
+          `# ブログリレーリマインド\n今日の担当者はいません\n${list[tommorowString]} 明日です\n 準備をお願いします！`
         )
-      } else if (todayString in below && tommorowString in below) {
+      } else if (todayString in list && tommorowString in list) {
         robot.send(
           { channelID: channelID },
-          `@${above[todayString]} ,@${above[todayString]} 今日です\n@${above[tommorowString]} ,@${above[tommorowString]} 明日です`
+          `# ブログリレーリマインド\n${list[todayString]} 今日です\n${list[tommorowString]} 明日です\n- 記事の初めに新歓ブログリレー2022の何日目の記事なのかを書いてください。\n- 記事の最後に明日の担当者の紹介をしてください。\n- 「新歓ブログリレー2022」のタグをつけてください。\n- post imageを設定してください。\n- 分からないことがあれば@ mehm8128まで。`
         )
-      } else if (!(todayString in below) && !(tommorowString in below)) {
+      } else if (!(todayString in list) && !(tommorowString in list)) {
         robot.send(
           { channelID: channelID },
-          `@${above[todayString]} 今日です\n@${above[tommorowString]} 明日です`
+          `# ブログリレーリマインド\n今日も明日も担当者がいません。`
         )
       } else {
         robot.send({ channelID: channelID }, '@mehm8128 エラー発生')
