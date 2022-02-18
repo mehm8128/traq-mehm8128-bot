@@ -2,18 +2,19 @@ const CronJob = require('cron').CronJob
 
 module.exports = (robot) => {
   const list = {
-    '2/18': '@mehm8128 @mehm',
-    '2/19': '@mehm8128 @mehm',
+    '2/18': '@mehm8128',
+    '2/19': '@mehm81',
+    '2/20': '@mehm',
   }
   const channelID = 'e93ef204-1e25-4456-90bf-9214a2e6684e'
   //ブログリレーID'22edf673-352f-4f18-88a1-201e681bc483'
   const today = new Date()
   const todayMonth = today.getMonth() + 1
-  const todayDate = today.getDate()
+  const todayDate = today.getDate() + 1
   const todayString = `${todayMonth}/${todayDate}`
   const tommorowString = `${todayMonth}/${todayDate + 1}`
   const cron = new CronJob(
-    '00 10 * * *',
+    '06 10 * * *',
     () => {
       if (todayString in list && !(tommorowString in list)) {
         robot.send(
