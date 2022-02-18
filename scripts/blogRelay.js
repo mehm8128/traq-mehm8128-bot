@@ -8,14 +8,15 @@ module.exports = (robot) => {
   }
   const channelID = 'e93ef204-1e25-4456-90bf-9214a2e6684e'
   //ブログリレーID'22edf673-352f-4f18-88a1-201e681bc483'
-  const today = new Date()
-  const todayMonth = today.getMonth() + 1
-  const todayDate = today.getDate() + 1
-  const todayString = `${todayMonth}/${todayDate}`
-  const tommorowString = `${todayMonth}/${todayDate + 1}`
+
   const cron = new CronJob(
     '06 10 * * *',
     () => {
+      const today = new Date()
+      const todayMonth = today.getMonth() + 1
+      const todayDate = today.getDate()
+      const todayString = `${todayMonth}/${todayDate}`
+      const tommorowString = `${todayMonth}/${todayDate + 1}`
       if (todayString in list && !(tommorowString in list)) {
         robot.send(
           { channelID: channelID },
