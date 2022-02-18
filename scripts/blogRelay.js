@@ -10,7 +10,7 @@ module.exports = (robot) => {
   //ブログリレーID'22edf673-352f-4f18-88a1-201e681bc483'
 
   const cron = new CronJob(
-    '11 10 * * *',
+    '00 10 * * *',
     () => {
       const today = new Date()
       const todayMonth = today.getMonth() + 1
