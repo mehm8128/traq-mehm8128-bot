@@ -66,7 +66,6 @@ module.exports = (robot) => {
   const atCoderReminder = new CronJob(
     '30 20 * * *',
     () => {
-      if (res.message.message.user.name === 'BOT_mehm8128') return
       const today = new Date()
       const todayMonth = today.getMonth() + 1
       const todayDate = today.getDate()
