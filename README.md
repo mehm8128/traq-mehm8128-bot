@@ -4,7 +4,7 @@ mehm8128 の bot です。
 
 ## できること
 
-- ping=>ping
+- ping=>pong
 - help=>できることを教えてくれます
 - AtCoder {AtCoder の id}=>前回のコンテストの結果を教えてくれます
 - スタンプ押して=> スタンプを押してくれます
