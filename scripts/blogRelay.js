@@ -57,7 +57,11 @@ module.exports = (robot) => {
     '4/30': '@mehm8128',
   }
   const channelID = '22edf673-352f-4f18-88a1-201e681bc483'
-
+  robot.respond(/test/i, (res) => {
+    res.reply(
+      `# ブログリレーリマインド\n 今日です\n## 注意！\n- 記事の初めに新歓ブログリレー2022の**何日目の記事なのか**を書いてください。\n- 記事の最後に**次回の担当者の紹介**をしてください。\n- **「新歓ブログリレー2022」**のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば@mehm8128まで。`
+    )
+  })
   const cron = new CronJob(
     '00 10 * * *',
     () => {
@@ -69,7 +73,7 @@ module.exports = (robot) => {
       if (todayString in list && !(tommorowString in list)) {
         robot.send(
           { channelID: channelID },
-          `# ブログリレーリマインド\n${list[todayString]} 今日です\n## 注意！\n- 記事の初めに新歓ブログリレー2022の何日目の記事なのかを書いてください。\n- 記事の最後に次回の担当者の紹介をしてください。\n- 「新歓ブログリレー2022」のタグをつけてください。\n- post imageを設定してください。\n- 分からないことがあれば@mehm8128まで。`
+          `# ブログリレーリマインド\n${list[todayString]} 今日です\n## 注意！\n- 記事の初めに新歓ブログリレー2022の**何日目の記事なのか**を書いてください。\n- 記事の最後に**次回の担当者の紹介**をしてください。\n- **「新歓ブログリレー2022」**のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば@mehm8128まで。`
         )
       } else if (!(todayString in list) && tommorowString in list) {
         robot.send(
@@ -79,7 +83,7 @@ module.exports = (robot) => {
       } else if (todayString in list && tommorowString in list) {
         robot.send(
           { channelID: channelID },
-          `# ブログリレーリマインド\n${list[todayString]} 今日です\n${list[tommorowString]} 明日です\n- 記事の初めに新歓ブログリレー2022の何日目の記事なのかを書いてください。\n- 記事の最後に明日の担当者の紹介をしてください。\n- 「新歓ブログリレー2022」のタグをつけてください。\n- post imageを設定してください。\n- 分からないことがあれば@mehm8128まで。`
+          `# ブログリレーリマインド\n${list[todayString]} 今日です\n${list[tommorowString]} 明日です\n## 注意！\n- 記事の初めに新歓ブログリレー2022の**何日目の記事なのか**を書いてください。\n- 記事の最後に**明日の担当者の紹介**をしてください。\n- **「新歓ブログリレー2022」**のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば@mehm8128まで。`
         )
       } else if (!(todayString in list) && !(tommorowString in list)) {
         robot.send(
