@@ -20,7 +20,7 @@ module.exports = (robot) => {
     '3/24': '@ebi @mehm8128',
     '3/25': '@Tennessine_699 @yukikurage',
     '3/26': '@d_etteiu8383 @mehm8128',
-    '3/27': '@irori',
+    '3/27': '@irori @logica',
     '3/28': '@anemone028199 @yukikurage',
     '3/29': '@aya_se',
     '3/30': '@yuyu_5510',
