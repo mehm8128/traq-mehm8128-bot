@@ -11,7 +11,7 @@ module.exports = (robot) => {
     '3/15': '@season1618',
     '3/16': '@Uzaki',
     '3/17': '@toruthi',
-    '3/18': '@mehm8128',
+    '3/18': '@mehm8128 @anko',
     '3/19': '@mehm8128 @yukikurage',
     '3/20': '@d_etteiu8383 @asari',
     '3/21': '@d_etteiu8383 @irori',
@@ -52,7 +52,7 @@ module.exports = (robot) => {
     '4/25': '@komichi',
     '4/26': '@Uzaki',
     '4/27': '@mehm8128',
-    '4/28': '',
+    '4/28': '@xxarupakaxx',
     '4/29': '@Fogrex',
     '4/30': '@mehm8128',
   }
