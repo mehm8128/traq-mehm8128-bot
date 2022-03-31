@@ -44,7 +44,7 @@ module.exports = (robot) => {
     '4/17': '@kashiwade',
     '4/18': '@sappi_red',
     '4/19': '@logica',
-    '4/20': '',
+    '4/20': 'say_illness',
     '4/21': '@kejun',
     '4/22': '@sabanishi',
     '4/23': '@Fourmsushi',
@@ -64,23 +64,23 @@ module.exports = (robot) => {
       const todayMonth = today.getMonth() + 1
       const todayDate = today.getDate()
       const todayString = `${todayMonth}/${todayDate}`
-      const tommorowString = `${todayMonth}/${todayDate + 1}`
-      if (todayString in list && !(tommorowString in list)) {
+      const tomorrowString = `${todayMonth}/${todayDate + 1}`
+      if (todayString in list && !(tomorrowString in list)) {
         robot.send(
           { channelID: channelID },
           `# ブログリレーリマインド\n${list[todayString]} 今日です\n## 注意！\n- 記事の初めに新歓ブログリレー2022の**何日目の記事なのか**を書いてください。\n- 記事の最後に**次回の担当者の紹介**をしてください。\n- 「**新歓ブログリレー2022**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/welcome/blog/buriまで。`
         )
-      } else if (!(todayString in list) && tommorowString in list) {
+      } else if (!(todayString in list) && tomorrowString in list) {
         robot.send(
           { channelID: channelID },
-          `# ブログリレーリマインド\n今日の担当者はいません\n${list[tommorowString]} 明日です\n 準備をお願いします！`
+          `# ブログリレーリマインド\n今日の担当者はいません\n${list[tomorrowString]} 明日です\n 準備をお願いします！`
         )
-      } else if (todayString in list && tommorowString in list) {
+      } else if (todayString in list && tomorrowString in list) {
         robot.send(
           { channelID: channelID },
-          `# ブログリレーリマインド\n${list[todayString]} 今日です\n${list[tommorowString]} 明日です\n## 注意！\n- 記事の初めに新歓ブログリレー2022の**何日目の記事なのか**を書いてください。\n- 記事の最後に**明日の担当者の紹介**をしてください。\n- 「**新歓ブログリレー2022**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/welcome/blog/buriまで。`
+          `# ブログリレーリマインド\n${list[todayString]} 今日です\n${list[tomorrowString]} 明日です\n## 注意！\n- 記事の初めに新歓ブログリレー2022の**何日目の記事なのか**を書いてください。\n- 記事の最後に**明日の担当者の紹介**をしてください。\n- 「**新歓ブログリレー2022**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/welcome/blog/buriまで。`
         )
-      } else if (!(todayString in list) && !(tommorowString in list)) {
+      } else if (!(todayString in list) && !(tomorrowString in list)) {
         robot.send(
           { channelID: channelID },
           `# ブログリレーリマインド\n今日も明日も担当者がいません。`
