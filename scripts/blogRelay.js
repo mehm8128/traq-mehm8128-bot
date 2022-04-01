@@ -53,7 +53,7 @@ module.exports = (robot) => {
     '4/26': '@Uzaki',
     '4/27': '@mehm8128',
     '4/28': '@xxarupakaxx',
-    '4/29': '@Fogrex',
+    '4/29': '',
     '4/30': '@mehm8128',
   }
   const channelID = '22edf673-352f-4f18-88a1-201e681bc483'
