@@ -29,7 +29,7 @@ module.exports = (robot) => {
     '4/2': '@reyu',
     '4/3': '@kamijo',
     '4/4': '@Macky1_2',
-    '4/5': '@dan_dan',
+    '4/5': '@dan_dan @mazrean',
     '4/6': '@annin',
     '4/7': '@irori',
     '4/8': '@mera',
