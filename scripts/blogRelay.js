@@ -46,7 +46,7 @@ module.exports = (robot) => {
     '4/19': '@logica',
     '4/20': 'say_illness',
     '4/21': '@kejun',
-    '4/22': '@sabanishi',
+    '4/22': '@sabanishi @d_etteiu8383',
     '4/23': '@Fourmsushi',
     '4/24': '@Tennessine_669',
     '4/25': '@komichi',
