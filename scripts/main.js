@@ -87,4 +87,16 @@ module.exports = (robot) => {
     true,
     'Asia/Tokyo'
   )
+  const atCoderProblemsReminder = new CronJob(
+    '00 20 * * *',
+    () => {
+      robot.send(
+        { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
+        '@mehm8128 今週C問題3問解きましたか？'
+      )
+    },
+    null,
+    true,
+    'Asia/Tokyo'
+  )
 }
