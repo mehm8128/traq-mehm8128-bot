@@ -88,7 +88,7 @@ module.exports = (robot) => {
     'Asia/Tokyo'
   )
   const atCoderProblemsReminder = new CronJob(
-    '00 20 * * *',
+    '00 20 * * 0',
     () => {
       robot.send(
         { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
