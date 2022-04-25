@@ -13,7 +13,7 @@ module.exports = (robot) => {
     )
   })
   robot.respond(/AtCoder.*/i, (response) => {
-    if (res.message.message.user.name === 'BOT_mehm8128') return
+    if (response.message.message.user.name === 'BOT_mehm8128') return
     const userId = response.message.message.plainText.split(' ')[2]
     const url = `https://atcoder.jp/users/${userId}/history/json`
     fetch(url)
