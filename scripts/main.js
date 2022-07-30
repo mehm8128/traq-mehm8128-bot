@@ -78,7 +78,8 @@ module.exports = (robot) => {
           if (month === todayMonth && date === todayDate && a === 'abc') {
             robot.send(
               { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
-              '@mehm8128 :user1_1::user1_2: 30分後にABCです！'
+              //'@mehm8128 :user1_1::user1_2: 30分後にABCです！',
+              ':user1_1::user1_2: \\ {:@mehm8128:} 30分後にABCです！'
             )
           }
         })
@@ -87,6 +88,7 @@ module.exports = (robot) => {
     true,
     'Asia/Tokyo'
   )
+
   const GithubWwwReminder = new CronJob(
     '00 20 * * *',
     () => {
