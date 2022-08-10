@@ -70,7 +70,7 @@ module.exports = (robot) => {
       if (todayString in list && !(tomorrowString in list)) {
         robot.send(
           { channelID: channelID },
-          `# ブログリレーリマインド\n${list[todayString]} 今日です\n## 注意！\n- 記事の初めに夏のブログリレーの**何日目の記事なのか**を書いてください。\n- 記事の最後に**次回の担当者の紹介**をしてください。\n- 「**夏のブログリレー**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/AdventCalender/buri まで。`
+          `# ブログリレーリマインド\n${list[todayString]} 今日です\n## 注意！\n- 記事の初めに夏のブログリレーの**何日目の記事なのか**を書いてください。\n- 記事の最後に**次回の担当者の紹介**をしてください。\n- 「**夏のブログリレー**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/AdventCalendar/buri まで。`
         )
       } else if (!(todayString in list) && tomorrowString in list) {
         robot.send(
@@ -80,7 +80,7 @@ module.exports = (robot) => {
       } else if (todayString in list && tomorrowString in list) {
         robot.send(
           { channelID: channelID },
-          `# ブログリレーリマインド\n${list[todayString]} 今日です\n${list[tomorrowString]} 明日です\n## 注意！\n- 記事の初めに夏ブログリレーの**何日目の記事なのか**を書いてください。\n- 記事の最後に**明日の担当者の紹介**をしてください。\n- 「**夏のブログリレー**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/AdventCalender/buri まで。`
+          `# ブログリレーリマインド\n${list[todayString]} 今日です\n${list[tomorrowString]} 明日です\n## 注意！\n- 記事の初めに夏ブログリレーの**何日目の記事なのか**を書いてください。\n- 記事の最後に**明日の担当者の紹介**をしてください。\n- 「**夏のブログリレー**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/AdventCalendar/buri まで。`
         )
       } else if (!(todayString in list) && !(tomorrowString in list)) {
         robot.send(
