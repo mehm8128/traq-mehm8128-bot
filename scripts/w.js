@@ -52,7 +52,7 @@ module.exports = (robot) => {
     }
     const numbers = []
     const today = new Date()
-    const youbi = today.getDay()
+    const youbi = today.getDay() + 1
     for (let i = -1; i < 27; i++) {
       const day = new Date(today.getTime() - i * oneDaySecond)
       const year = day.getFullYear()
@@ -63,7 +63,6 @@ module.exports = (robot) => {
       const prevMonth = (prevDay.getMonth() + 1).toString().padStart(2, '0')
       const prevDate = prevDay.getDate().toString().padStart(2, '0')
       const url = `https://q.trap.jp/api/v3/messages?word=&after=${prevYear}-${prevMonth}-${prevDate}T00%3A00%3A00.000Z&before=${year}-${month}-${date}T00%3A00%3A00.000Z&from=${userUuid}&limit=1&offset=0&sort=createdAt`
-
       await fetch(url, {
         headers: {
           Authorization: process.env.ACCESS_TOKEN,
