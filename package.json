@@ -6,6 +6,7 @@
   "description": "bot for traQ",
   "dependencies": {
     "cron": "^1.8.2",
+    "dotenv": "^16.0.1",
     "hubot": "^3.3.2",
     "hubot-traq": "^1.8.1",
     "jsdom": "^19.0.0",
