@@ -32,6 +32,9 @@ module.exports = (robot) => {
       response.send('月の指定が不正です')
       return
     }
+    if (monthArg === undefined) {
+      monthArg = 0
+    }
     let userUuid = ''
     const url = `https://q.trap.jp/api/v3/users?include-suspended=false&name=${userId}`
     flag = false
