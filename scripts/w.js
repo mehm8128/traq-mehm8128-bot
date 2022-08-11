@@ -27,7 +27,7 @@ const oneDaySecond = 1000 * 60 * 60 * 24
 module.exports = (robot) => {
   robot.respond(/草.*/i, async (response) => {
     const userId = response.message.message.plainText.split(' ')[2]
-    const monthArg = response.message.message.plainText.split(' ')[3]
+    let monthArg = response.message.message.plainText.split(' ')[3]
     if (monthArg !== undefined && isNaN(Number(monthArg))) {
       response.send('月の指定が不正です')
       return
