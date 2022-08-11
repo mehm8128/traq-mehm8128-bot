@@ -29,6 +29,7 @@ module.exports = (robot) => {
     const userId = response.message.message.plainText.split(' ')[2]
     let userUuid = ''
     const url = `https://q.trap.jp/api/v3/users?include-suspended=false&name=${userId}`
+    flag = false
     await fetch(url, {
       headers: {
         Authorization: process.env.ACCESS_TOKEN,
@@ -36,11 +37,19 @@ module.exports = (robot) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        userUuid = data[0].id
+        try {
+          userUuid = data[0].id
+        } catch (err) {
+          flag = true
+        }
       })
       .catch((err) => {
         response.reply(err)
       })
+    if (flag) {
+      response.reply('ユーザーが見つかりませんでした')
+      return
+    }
     const numbers = []
     const today = new Date()
     const youbi = today.getDay()
