@@ -28,7 +28,7 @@ module.exports = (robot) => {
   robot.respond(/草.*/i, async (response) => {
     const userId = response.message.message.plainText.split(' ')[2]
     const monthArg = Number(response.message.message.plainText.split(' ')[3])
-    if (isNaN(monthArg) && monthArg !== '') {
+    if (isNaN(monthArg) && monthArg !== undefined) {
       response.send('月の指定が不正です')
       return
     }
