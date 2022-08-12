@@ -162,6 +162,9 @@ module.exports = (robot) => {
     for (let i = youbi + 1; i < 7; i++) {
       w[4][i] = ':null:'
     }
+    responseMessage +=
+      ':day0_sunday: :day1_monday: :day2_tuesday: :day3_wednesday: :day4_thursday: :day5_friday: :day6_saturday:'
+    responseMessage += '\n'
     for (let i = 0; i < 5; i++) {
       for (let j = 0; j < 7; j++) {
         responseMessage += ` ${w[i][j]}`
