@@ -31,7 +31,7 @@ module.exports = (robot) => {
     let until = response.message.message.plainText.match(
       /until:(\d{4}-\d{2}-\d{2})/
     )
-    let userId = response.message.message.plainText.match(/user:\w/).slice(5)
+    let userId = response.message.message.plainText.match(/user:\w/)
     let borderDate = null
     let youbi = 0
     let mode = 0 //1:sinceを指定,-1:untilを指定
@@ -67,6 +67,8 @@ module.exports = (robot) => {
     }
     if (userId === null) {
       userId = response.message.message.user.id
+    } else {
+      userId = userId.slice(5)
     }
     let userUuid = ''
     const url = `https://q.trap.jp/api/v3/users?include-suspended=false&name=${userId}`
