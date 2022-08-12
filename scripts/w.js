@@ -66,7 +66,7 @@ module.exports = (robot) => {
       return
     }
     if (userId === null) {
-      userId = response.message.message.user.id
+      userId = response.message.message.user.name
     } else {
       userId = userId.slice(5)
     }
