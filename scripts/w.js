@@ -31,7 +31,9 @@ module.exports = (robot) => {
     let until = response.message.message.plainText.match(
       /until:(\d{4}-\d{2}-\d{2})/
     )
-    let userId = response.message.message.plainText.match(/user:(\w*)/)
+    let userId = response.message.message.plainText.match(
+      /user:([a-zA-Z0-9-_]*)/
+    )
     let borderDate = null
     let youbi = 0
     let mode = 0 //1:sinceを指定,-1:untilを指定
