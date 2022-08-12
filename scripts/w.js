@@ -24,13 +24,13 @@ const toGrass = (number) => {
 }
 
 module.exports = (robot) => {
-  robot.respond(/草2.*/i, async (response) => {
-    const since = response.message.message.plainText
-      .match(/since:(\d{4}-\d{2}-\d{2})/)
-      .slice(6)
-    const until = response.message.message.plainText
-      .match(/until:(\d{4}-\d{2}-\d{2})/)
-      .slice(6)
+  robot.respond(/草.*/i, async (response) => {
+    let since = response.message.message.plainText.match(
+      /since:(\d{4}-\d{2}-\d{2})/
+    )
+    let until = response.message.message.plainText.match(
+      /until:(\d{4}-\d{2}-\d{2})/
+    )
     let userId = response.message.message.plainText.match(/user:\w/).slice(5)
     let borderDate = null
     let youbi = 0
@@ -40,6 +40,7 @@ module.exports = (robot) => {
       youbi = borderDate.getDay()
       mode = -1
     } else if (since !== null && until === null) {
+      since = since.slice(6)
       borderDate = new Date(
         since.slice(0, 4) +
           '-' +
@@ -50,6 +51,7 @@ module.exports = (robot) => {
       youbi = borderDate.getDay()
       mode = 1
     } else if (since === null && until !== null) {
+      until = until.slice(6)
       borderDate = new Date(
         until.slice(0, 4) +
           '-' +
