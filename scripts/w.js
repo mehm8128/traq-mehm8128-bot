@@ -22,18 +22,49 @@ const toGrass = (number) => {
     return ':null:'
   }
 }
-const oneDaySecond = 1000 * 60 * 60 * 24
 
 module.exports = (robot) => {
-  robot.respond(/草.*/i, async (response) => {
-    const userId = response.message.message.plainText.split(' ')[2]
-    let monthArg = response.message.message.plainText.split(' ')[3]
-    if (monthArg !== undefined && isNaN(Number(monthArg))) {
-      response.send('月の指定が不正です')
+  robot.respond(/草2.*/i, async (response) => {
+    const since = response.message.message.plainText
+      .match(/since:(\d{4}-\d{2}-\d{2})/)
+      .slice(6)
+    const until = response.message.message.plainText
+      .match(/until:(\d{4}-\d{2}-\d{2})/)
+      .slice(6)
+    let userId = response.message.message.plainText.match(/user:\w/).slice(5)
+    let borderDate = null
+    let youbi = 0
+    let mode = 0 //1:sinceを指定,-1:untilを指定
+    if (since === null && until === null) {
+      borderDate = new Date()
+      youbi = borderDate.getDay()
+      mode = -1
+    } else if (since !== null && until === null) {
+      borderDate = new Date(
+        since.slice(0, 4) +
+          '-' +
+          Number(since.slice(5, 7)).toString().padStart(2, '0') +
+          '-' +
+          since.slice(8)
+      )
+      youbi = borderDate.getDay()
+      mode = 1
+    } else if (since === null && until !== null) {
+      borderDate = new Date(
+        until.slice(0, 4) +
+          '-' +
+          Number(until.slice(5, 7)).toString().padStart(2, '0') +
+          '-' +
+          until.slice(8)
+      )
+      youbi = borderDate.getDay()
+      mode = -1
+    } else if (since !== null && until !== null) {
+      response.send('sinceとuntilをどちらも指定することはできません')
       return
     }
-    if (monthArg === undefined) {
-      monthArg = 0
+    if (userId === null) {
+      userId = response.message.message.user.id
     }
     let userUuid = ''
     const url = `https://q.trap.jp/api/v3/users?include-suspended=false&name=${userId}`
@@ -59,22 +90,23 @@ module.exports = (robot) => {
       return
     }
     const numbers = []
-    const today = new Date()
-    const youbi = today.getDay() + 1
-    for (let i = -1; i < 27; i++) {
-      const day = new Date(today.getTime() - i * oneDaySecond)
-      const year = day.getFullYear()
-      const month = ((day.getMonth() + 1 - monthArg) % 12)
-        .toString()
-        .padStart(2, '0')
-      const date = day.getDate().toString().padStart(2, '0')
-      const prevDay = new Date(today.getTime() - (i + 1) * oneDaySecond)
-      const prevYear = prevDay.getFullYear()
-      const prevMonth = ((prevDay.getMonth() + 1 - monthArg) % 12)
-        .toString()
-        .padStart(2, '0')
-      const prevDate = prevDay.getDate().toString().padStart(2, '0')
-      const url = `https://q.trap.jp/api/v3/messages?word=&after=${prevYear}-${prevMonth}-${prevDate}T00%3A00%3A00.000Z&before=${year}-${month}-${date}T00%3A00%3A00.000Z&from=${userUuid}&limit=1&offset=0&sort=createdAt`
+    for (let i = 0; i < 28; i++) {
+      let year
+      let month
+      let date
+      let nextYear
+      let nextMonth
+      let nextDate
+      year = borderDate.getFullYear()
+      month = (borderDate.getMonth() + 1).toString().padStart(2, '0')
+      date = borderDate.getDate().toString().padStart(2, '0')
+      nextBorderDate = new Date(`${year}-${month}-${date}`)
+      nextBorderDate.setDate(nextBorderDate.getDate() + 1)
+      nextYear = nextBorderDate.getFullYear()
+      nextMonth = (nextBorderDate.getMonth() + 1).toString().padStart(2, '0')
+      nextDate = nextBorderDate.getDate().toString().padStart(2, '0')
+      borderDate.setDate(borderDate.getDate() + mode)
+      const url = `https://q.trap.jp/api/v3/messages?word=&after=${year}-${month}-${date}T00%3A00%3A00.000Z&before=${nextYear}-${nextMonth}-${nextDate}T00%3A00%3A00.000Z&from=${userUuid}&limit=1&offset=0&sort=createdAt`
       console.log(url)
       await fetch(url, {
         headers: {
@@ -88,9 +120,13 @@ module.exports = (robot) => {
         .catch((err) => {
           response.reply(err)
         })
-      await delay(0.2)
+      await delay(0.1)
     }
-    numbers.reverse()
+    if (mode === -1) {
+      numbers.reverse()
+    } else {
+      youbi -= 1
+    }
     let responseMessage = ''
     let currentIndex = 0
     const w = [
@@ -100,10 +136,10 @@ module.exports = (robot) => {
       ['', '', '', '', '', '', ''],
       ['', '', '', '', '', '', ''],
     ]
-    for (let i = 0; i < youbi; i++) {
+    for (let i = 0; i < youbi + 1; i++) {
       w[0][i] = ':null:'
     }
-    for (let i = youbi; i < 7; i++) {
+    for (let i = youbi + 1; i < 7; i++) {
       w[0][i] = toGrass(numbers[currentIndex])
       currentIndex++
     }
@@ -113,11 +149,11 @@ module.exports = (robot) => {
         currentIndex++
       }
     }
-    for (let i = 0; i < youbi; i++) {
+    for (let i = 0; i < youbi + 1; i++) {
       w[4][i] = toGrass(numbers[currentIndex])
       currentIndex++
     }
-    for (let i = youbi; i < 7; i++) {
+    for (let i = youbi + 1; i < 7; i++) {
       w[4][i] = ':null:'
     }
     for (let i = 0; i < 5; i++) {
@@ -132,7 +168,5 @@ module.exports = (robot) => {
 }
 
 /*
-ユーザー指定しなかったら自分の草を生やす→月指定の方法を変える必要あり。month:1など
 どのユーザー(メンション)に対しての草なのかを明示する→指定されたユーザー名を最初に書けばいい
-4/31のバグ修正→不明
 */
