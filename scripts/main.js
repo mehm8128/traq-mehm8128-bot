@@ -21,10 +21,14 @@ module.exports = (robot) => {
         return res.json()
       })
       .then((json) => {
-        const l = json.length
-        const result = json[l - 1]
+        json.reverse()
+        const result = json[1]
         response.reply(
-          `前回参加した${result.ContestName}の結果はパフォーマンスは${result.Performance}で、レートが${result.OldRating}からに${result.NewRating}に変化しました！`
+          `前回参加した${result.ContestName}の結果はパフォーマンスは${
+            result.Performance || 'undefined'
+          }で、レートが${result.OldRating}からに${
+            result.NewRating
+          }に変化しました！`
         )
       })
       .catch((err) => {
