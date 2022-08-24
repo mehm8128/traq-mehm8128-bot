@@ -82,11 +82,23 @@ module.exports = (robot) => {
           if (month === todayMonth && date === todayDate && a === 'abc') {
             robot.send(
               { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
-              //'@mehm8128 :user1_1::user1_2: 30分後にABCです！',
-              ':user1_1::user1_2: \\ {:@mehm8128:} 30分後にABCです！'
+              '30分後にABCです！'
             )
           }
         })
+    },
+    null,
+    true,
+    'Asia/Tokyo'
+  )
+
+  const mokumokuReminder = new CronJob(
+    '30 20 * * 2,3',
+    () => {
+      robot.send(
+        { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
+        '30分後にもくもくもくもく会です！'
+      )
     },
     null,
     true,
