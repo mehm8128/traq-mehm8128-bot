@@ -26,7 +26,7 @@ module.exports = (robot) => {
     '8/31': '@mehm8128',
     '9/1': '@kashiwade',
     '9/2': '@Kejun',
-    '9/3': '',
+    '9/3': '@toruthi',
     '9/4': '',
     '9/5': '@Kitaju',
     '9/6': '@d_etteiu8383',
