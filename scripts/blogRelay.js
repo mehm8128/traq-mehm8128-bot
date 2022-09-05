@@ -44,7 +44,7 @@ module.exports = (robot) => {
     '9/18': '',
     '9/19': '',
     '9/20': '@H1rono_K',
-    '9/21': '',
+    '9/21': '@SlimySlime',
     '9/22': '@ikura-hamu',
     '9/23': '@ikura-hamu',
     '9/24': '',
