@@ -56,65 +56,65 @@ module.exports = (robot) => {
     )
   })
 
-  const atCoderReminder = new CronJob(
-    '30 20 * * *',
-    () => {
-      const today = new Date()
-      const todayMonth = today.getMonth() + 1
-      const todayDate = today.getDate()
-      const url = 'https://atcoder.jp/contests/'
-      fetch(url)
-        .then((res) => {
-          return res.text()
-        })
-        .then((data) => {
-          const root = parse(data)
-          const time = root
-            .querySelector('#contest-table-upcoming')
-            .getElementsByTagName('time')[0].innerText
-          const month = Number(time.split('-')[1])
-          const date = Number(time.split('-')[2].split(' ')[0])
-          const a = root
-            .querySelector('#contest-table-upcoming')
-            .getElementsByTagName('a')[1]
-            .attrs.href.split('/')[2]
-            .slice(0, 3)
-          if (month === todayMonth && date === todayDate && a === 'abc') {
-            robot.send(
-              { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
-              '30分後にABCです！'
-            )
-          }
-        })
-    },
-    null,
-    true,
-    'Asia/Tokyo'
-  )
+  // const atCoderReminder = new CronJob(
+  //   '30 20 * * *',
+  //   () => {
+  //     const today = new Date()
+  //     const todayMonth = today.getMonth() + 1
+  //     const todayDate = today.getDate()
+  //     const url = 'https://atcoder.jp/contests/'
+  //     fetch(url)
+  //       .then((res) => {
+  //         return res.text()
+  //       })
+  //       .then((data) => {
+  //         const root = parse(data)
+  //         const time = root
+  //           .querySelector('#contest-table-upcoming')
+  //           .getElementsByTagName('time')[0].innerText
+  //         const month = Number(time.split('-')[1])
+  //         const date = Number(time.split('-')[2].split(' ')[0])
+  //         const a = root
+  //           .querySelector('#contest-table-upcoming')
+  //           .getElementsByTagName('a')[1]
+  //           .attrs.href.split('/')[2]
+  //           .slice(0, 3)
+  //         if (month === todayMonth && date === todayDate && a === 'abc') {
+  //           robot.send(
+  //             { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
+  //             '30分後にABCです！'
+  //           )
+  //         }
+  //       })
+  //   },
+  //   null,
+  //   true,
+  //   'Asia/Tokyo'
+  // )
 
-  const mokumokuReminder = new CronJob(
-    '30 20 * * 2,3',
-    () => {
-      robot.send(
-        { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
-        '30分後にもくもくもくもく会です！'
-      )
-    },
-    null,
-    true,
-    'Asia/Tokyo'
-  )
+  // const mokumokuReminder = new CronJob(
+  //   '30 20 * * 2,3',
+  //   () => {
+  //     robot.send(
+  //       { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
+  //       '30分後にもくもくもくもく会です！'
+  //     )
+  //   },
+  //   null,
+  //   true,
+  //   'Asia/Tokyo'
+  // )
 
-  const GithubWwwReminder = new CronJob(
-    '00 20 * * *',
-    () => {
-      robot.send(
-        { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
-        '@mehm8128 今日もGithubの草を生やしましたか？？'
-      )
-    },
-    null,
-    true,
-    'Asia/Tokyo'
-  )
+  // const GithubWwwReminder = new CronJob(
+  //   '00 20 * * *',
+  //   () => {
+  //     robot.send(
+  //       { channelID: '5d53eb01-6d08-4d18-9ea6-0ce9f656c608' },
+  //       '@mehm8128 今日もGithubの草を生やしましたか？？'
+  //     )
+  //   },
+  //   null,
+  //   true,
+  //   'Asia/Tokyo'
+  // )
 }
