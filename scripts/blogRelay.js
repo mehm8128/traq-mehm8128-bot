@@ -42,7 +42,7 @@ module.exports = (robot) => {
     '9/16': '@Komichi',
     '9/17': '@d_etteiu8383',
     '9/18': '',
-    '9/19': '',
+    '9/19': '@ryoha',
     '9/20': '@H1rono_K',
     '9/21': '@SlimySlime',
     '9/22': '@ikura-hamu',
