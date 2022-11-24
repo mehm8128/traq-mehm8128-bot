@@ -5,13 +5,13 @@
   "author": "mehm8128 <mehm8128@gmail.com>",
   "description": "bot for traQ",
   "dependencies": {
-    "cron": "^1.8.2",
-    "dotenv": "^16.0.1",
+    "cron": "^2.1.0",
+    "dotenv": "^16.0.3",
     "hubot": "^3.3.2",
     "hubot-traq": "^1.8.1",
-    "jsdom": "^19.0.0",
-    "node-fetch": "^2.6.7",
-    "node-html-parser": "^5.2.0"
+    "jsdom": "^20.0.3",
+    "node-fetch": "^3.3.0",
+    "node-html-parser": "^6.1.4"
   },
   "engines": {
     "node": "0.10.x"

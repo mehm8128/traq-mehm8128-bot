@@ -1,5 +1,6 @@
-const fetch = require('node-fetch')
-require('dotenv').config()
+import fetch from 'node-fetch'
+import { config } from 'dotenv'
+config()
 
 function delay(n) {
   return new Promise(function (resolve) {

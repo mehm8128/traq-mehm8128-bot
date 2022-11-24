@@ -1,6 +1,6 @@
-const fetch = require('node-fetch')
-const CronJob = require('cron').CronJob
-const { parse } = require('node-html-parser')
+import fetch from 'node-fetch'
+import { CronJob } from 'cron'
+import { parse } from 'node-html-parser'
 
 module.exports = (robot) => {
   robot.respond(/ping/i, (res) => {
