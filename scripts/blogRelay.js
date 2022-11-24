@@ -2,6 +2,7 @@ const CronJob = require('cron').CronJob
 
 module.exports = (robot) => {
   const list = {
+    '11/24': '',
     '11/25': '@mehm8128',
     '11/26': '@Uzaki',
     '11/27': '@oribe',
@@ -37,7 +38,7 @@ module.exports = (robot) => {
   const channelID = '706f39fe-83f6-4f66-873d-4a8153e441a3'
 
   const cron = new CronJob(
-    '50 10 * * *',
+    '00 11 * * *',
     () => {
       const today = new Date()
       const tomorrow = new Date(today.getTime() + 1000 * 60 * 60 * 24)
