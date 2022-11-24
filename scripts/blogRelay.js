@@ -1,4 +1,4 @@
-import { CronJob } from 'cron'
+const CronJob = require('cron').CronJob
 
 module.exports = (robot) => {
   const list = {
