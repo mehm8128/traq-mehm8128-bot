@@ -37,7 +37,7 @@ module.exports = (robot) => {
   const channelID = '706f39fe-83f6-4f66-873d-4a8153e441a3'
 
   const cron = new CronJob(
-    '40 10 * * *',
+    '45 10 * * *',
     () => {
       const today = new Date()
       const tomorrow = new Date(today.getTime() + 1000 * 60 * 60 * 24)
