@@ -33,6 +33,7 @@ module.exports = (robot) => {
     '12/23': '@Uzaki',
     '12/24': '@ikura-hamu',
     '12/25': '',
+    '12/26': '',
   }
   const channelID = '706f39fe-83f6-4f66-873d-4a8153e441a3'
 
@@ -56,22 +57,22 @@ module.exports = (robot) => {
       if (list[todayString] !== '' && list[tomorrowString] === '') {
         robot.send(
           { channelID: channelID },
-          `# ブログリレーリマインド\n${list[todayString]} 今日です\n## 注意！\n- 記事の初めに夏のブログリレーの**何日目の記事なのか**を書いてください。\n- 記事の最後に**次回の担当者の紹介**をしてください。\n- 「**夏のブログリレー**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/AdventCalendar/buri まで。`
+          `# アドベントカレンダーリマインド\n${list[todayString]} 今日です\n## 注意！\n- 記事の初めにアドベントカレンダーの**何日目の記事なのか**を書いてください。\n- 記事の最後に**次回の担当者の紹介**をしてください。\n- 「**アドベントカレンダー2022**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/AdventCalendar/buri まで。`
         )
       } else if (list[todayString] === '' && list[tomorrowString] !== '') {
         robot.send(
           { channelID: channelID },
-          `# ブログリレーリマインド\n今日の担当者はいません\n${list[tomorrowString]} 明日です\n 準備をお願いします！`
+          `# アドベントカレンダーリマインド\n今日の担当者はいません\n${list[tomorrowString]} 明日です\n 準備をお願いします！`
         )
       } else if (list[todayString] !== '' && list[tomorrowString] !== '') {
         robot.send(
           { channelID: channelID },
-          `# ブログリレーリマインド\n${list[todayString]} 今日です\n${list[tomorrowString]} 明日です\n## 注意！\n- 記事の初めに夏ブログリレーの**何日目の記事なのか**を書いてください。\n- 記事の最後に**明日の担当者の紹介**をしてください。\n- 「**夏のブログリレー**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/AdventCalendar/buri まで。`
+          `# アドベントカレンダーリマインド\n${list[todayString]} 今日です\n${list[tomorrowString]} 明日です\n## 注意！\n- 記事の初めにアドベントカレンダーの**何日目の記事なのか**を書いてください。\n- 記事の最後に**明日の担当者の紹介**をしてください。\n- 「**アドベントカレンダー2022**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/AdventCalendar/buri まで。`
         )
       } else if (list[todayString] === '' && list[tomorrowString] === '') {
         robot.send(
           { channelID: channelID },
-          `# ブログリレーリマインド\n今日も明日も担当者がいません。`
+          `# アドベントカレンダーリマインド\n今日も明日も担当者がいません。`
         )
       } else {
         robot.send({ channelID: channelID }, '@mehm8128 エラー発生')
