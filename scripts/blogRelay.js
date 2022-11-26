@@ -29,7 +29,7 @@ module.exports = (robot) => {
     '12/19': '@toshi00',
     '12/20': '@dan_dan',
     '12/21': '@mehm8128',
-    '12/22': '@toruthi',
+    '12/22': '@toruthi @irori',
     '12/23': '@Uzaki',
     '12/24': '@ikura-hamu',
     '12/25': '',
