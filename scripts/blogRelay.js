@@ -12,7 +12,7 @@ module.exports = (robot) => {
     '12/02': '',
     '12/03': '',
     '12/04': '@pikachu',
-    '12/05': '',
+    '12/05': '@mehm8128',
     '12/06': '@s9',
     '12/07': '@inutamago_dogegg',
     '12/08': '@Uzaki @inutamago_dogegg',
@@ -57,12 +57,12 @@ module.exports = (robot) => {
       if (list[todayString] !== '' && list[tomorrowString] === '') {
         robot.send(
           { channelID: channelID },
-          `# アドベントカレンダーリマインド\n${list[todayString]} 今日です\n## 注意！\n- 記事の初めにアドベントカレンダーの**何日目の記事なのか**を書いてください。\n- 記事の最後に**次回の担当者の紹介**をしてください。\n- 「**アドベントカレンダー2022**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/AdventCalendar/buri まで。`
+          `# アドベントカレンダーリマインド\n${list[todayString]} 今日です\n明日の担当者がいません。誰かお願いします\n## 注意！\n- 記事の初めにアドベントカレンダーの**何日目の記事なのか**を書いてください。\n- 記事の最後に**次回の担当者の紹介**をしてください。\n- 「**アドベントカレンダー2022**」のタグをつけてください。\n- **post image**を設定してください。\n- 分からないことがあれば#event/AdventCalendar/buri まで。`
         )
       } else if (list[todayString] === '' && list[tomorrowString] !== '') {
         robot.send(
           { channelID: channelID },
-          `# アドベントカレンダーリマインド\n今日の担当者はいません\n${list[tomorrowString]} 明日です\n 準備をお願いします！`
+          `# アドベントカレンダーリマインド\n今日の担当者はいません。:oisu-1::oisu-2::exclamation:\n${list[tomorrowString]} 明日です\n 準備をお願いします！`
         )
       } else if (list[todayString] !== '' && list[tomorrowString] !== '') {
         robot.send(
