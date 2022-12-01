@@ -8,15 +8,15 @@ module.exports = (robot) => {
     '11/28': '',
     '11/29': '@Ras',
     '11/30': '@helgev',
-    '12/1': '@Hosoi',
-    '12/2': '@ikura-hamu',
-    '12/3': '@kamecha',
-    '12/4': '@pikachu',
-    '12/5': '@mehm8128',
-    '12/6': '@s9',
-    '12/7': '@inutamago_dogegg',
-    '12/8': '@Uzaki @inutamago_dogegg',
-    '12/9': '@Hmcmch',
+    '12/01': '@Hosoi',
+    '12/02': '@ikura-hamu',
+    '12/03': '@kamecha',
+    '12/04': '@pikachu',
+    '12/05': '@mehm8128',
+    '12/06': '@s9',
+    '12/07': '@inutamago_dogegg',
+    '12/08': '@Uzaki @inutamago_dogegg',
+    '12/09': '@Hmcmch',
     '12/10': '@YHz_ikiri',
     '12/11': '@quesera @noc7t',
     '12/12': '@Hinaruhi @ryoha',
@@ -35,11 +35,11 @@ module.exports = (robot) => {
     '12/25': '',
     '12/26': '',
   }
-  const channelID = '706f39fe-83f6-4f66-873d-4a8153e441a3'
-  //const channelID = '5d53eb01-6d08-4d18-9ea6-0ce9f656c608'
+  const channelID = '706f39fe-83f6-4f66-873d-4a8153e441a3' // #e/AdventCalendar
+  //const channelID = '5d53eb01-6d08-4d18-9ea6-0ce9f656c608'  #g/t/mehm8128
 
   const cron = new CronJob(
-    '17 13 * * *',
+    '00 10 * * *',
     () => {
       const today = new Date()
       const tomorrow = new Date(today.getTime() + 1000 * 60 * 60 * 24)
@@ -47,8 +47,12 @@ module.exports = (robot) => {
       const todayDate = today.getDate()
       const tomorrowMonth = tomorrow.getMonth() + 1
       const tomorrowDate = tomorrow.getDate()
-      const todayString = `${todayMonth}/${todayDate}`
-      const tomorrowString = `${tomorrowMonth}/${tomorrowDate}`
+      const todayString = `${todayMonth.toString().padStart(2, '0')}/${todayDate
+        .toString()
+        .padStart(2, '0')}`
+      const tomorrowString = `${tomorrowMonth
+        .toString()
+        .padStart(2, '0')}/${tomorrowDate.toString().padStart(2, '0')}`
       if (
         list[todayString] === undefined ||
         list[tomorrowString] === undefined
