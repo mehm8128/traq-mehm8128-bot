@@ -8,15 +8,15 @@ module.exports = (robot) => {
     '11/28': '',
     '11/29': '@Ras',
     '11/30': '@helgev',
-    '12/01': '@Hosoi',
-    '12/02': '@ikura-hamu',
-    '12/03': '@kamecha',
-    '12/04': '@pikachu',
-    '12/05': '@mehm8128',
-    '12/06': '@s9',
-    '12/07': '@inutamago_dogegg',
-    '12/08': '@Uzaki @inutamago_dogegg',
-    '12/09': '@Hmcmch',
+    '12/1': '@Hosoi',
+    '12/2': '@ikura-hamu',
+    '12/3': '@kamecha',
+    '12/4': '@pikachu',
+    '12/5': '@mehm8128',
+    '12/6': '@s9',
+    '12/7': '@inutamago_dogegg',
+    '12/8': '@Uzaki @inutamago_dogegg',
+    '12/9': '@Hmcmch',
     '12/10': '@YHz_ikiri',
     '12/11': '@quesera @noc7t',
     '12/12': '@Hinaruhi @ryoha',
@@ -24,7 +24,7 @@ module.exports = (robot) => {
     '12/14': '@Takeno_hito',
     '12/15': '@mera',
     '12/16': '@nosaerc',
-    '12/17': '@H1rono_K',
+    '12/17': '@H1rono_K @kitaju',
     '12/18': '@hijiki51',
     '12/19': '@toshi00',
     '12/20': '@dan_dan',
@@ -36,9 +36,10 @@ module.exports = (robot) => {
     '12/26': '',
   }
   const channelID = '706f39fe-83f6-4f66-873d-4a8153e441a3'
+  //const channelID = '5d53eb01-6d08-4d18-9ea6-0ce9f656c608'
 
   const cron = new CronJob(
-    '00 10 * * *',
+    '17 13 * * *',
     () => {
       const today = new Date()
       const tomorrow = new Date(today.getTime() + 1000 * 60 * 60 * 24)
