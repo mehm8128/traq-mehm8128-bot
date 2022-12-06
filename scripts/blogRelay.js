@@ -15,7 +15,7 @@ module.exports = (robot) => {
     '12/05': '@mehm8128',
     '12/06': '@s9',
     '12/07': '@inutamago_dogegg',
-    '12/08': '@Uzaki @inutamago_dogegg',
+    '12/08': '@Uzaki',
     '12/09': '@Hmcmch',
     '12/10': '@YHz_ikiri',
     '12/11': '@noc7t',
@@ -32,7 +32,7 @@ module.exports = (robot) => {
     '12/22': '@toruthi @irori',
     '12/23': '@Uzaki',
     '12/24': '@ikura-hamu @Renard',
-    '12/25': '',
+    '12/25': '@inutamago_dogegg',
     '12/26': '',
   }
   const channelID = '706f39fe-83f6-4f66-873d-4a8153e441a3' // #e/AdventCalendar
